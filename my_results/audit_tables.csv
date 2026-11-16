@@ -1,0 +1,6 @@
+schema,table,row_count,n_columns
+main,mart_ml_demand_features,2323349,19
+main,mart_revenue_borough,6080,9
+main,mart_revenue_daily,608,12
+main,mart_weather_impact,14590,12
+main,mart_zone_hourly,2323349,14

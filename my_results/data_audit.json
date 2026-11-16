@@ -1,0 +1,11 @@
+{
+  "raw_rows": 2323349,
+  "zone_count": 262,
+  "distinct_hours": 14590,
+  "full_hour_span": 14592,
+  "first_hour": "2025-01-01 00:00:00",
+  "last_hour": "2026-08-31 23:00:00",
+  "overall_zone_hour_coverage": 0.6077127381311103,
+  "missing_zone_hour_policy": "missing UNKNOWN, never silently treated as zero",
+  "dst_warning": "Local date+hour cannot distinguish repeated fall DST hour; verify zone-hour source grain against UTC timestamps"
+}
