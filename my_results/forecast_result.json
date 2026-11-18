@@ -1,0 +1,174 @@
+{
+  "selection_winner": "Stacking_Ridge",
+  "selection_ranking": [
+    {
+      "model": "Stacking_Ridge",
+      "mae": 5.2426833728191315,
+      "rmse": 12.379049635230352,
+      "wape_pct": 15.866788121446895,
+      "r2": 0.9685135265458662,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "WeightedEnsemble",
+      "mae": 5.2602716276805115,
+      "rmse": 12.366823810994148,
+      "wape_pct": 15.920018326947835,
+      "r2": 0.9685756893144092,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "XGBoost_Poisson",
+      "mae": 5.285909188287538,
+      "rmse": 12.479084282396737,
+      "wape_pct": 15.997609459803853,
+      "r2": 0.9680025883372779,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "ExtraTrees",
+      "mae": 5.3370435867738335,
+      "rmse": 12.58045516899249,
+      "wape_pct": 16.15236583336364,
+      "r2": 0.9674806301153501,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "LightGBM_Poisson",
+      "mae": 5.359923495920003,
+      "rmse": 12.683392894078796,
+      "wape_pct": 16.221611035647335,
+      "r2": 0.9669462829868181,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "HistGradientBoosting",
+      "mae": 5.4365751000562925,
+      "rmse": 12.538223674169881,
+      "wape_pct": 16.453594292218774,
+      "r2": 0.9676985930568005,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "CatBoost_Poisson",
+      "mae": 5.499015099428823,
+      "rmse": 12.586074280684608,
+      "wape_pct": 16.642566650435878,
+      "r2": 0.9674515738089402,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "RandomForest",
+      "mae": 5.505752302660393,
+      "rmse": 13.177933066830414,
+      "wape_pct": 16.662956547861434,
+      "r2": 0.9643184256911808,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "SeasonalNaive_lag_168h",
+      "mae": 7.785301645648603,
+      "rmse": 18.926128262427405,
+      "wape_pct": 23.561928670629225,
+      "r2": 0.9264008208124337,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "SeasonalNaive_lag_1h",
+      "mae": 8.949446286148453,
+      "rmse": 21.191133642751733,
+      "wape_pct": 27.085169545577696,
+      "r2": 0.9077305793510034,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    },
+    {
+      "model": "SeasonalNaive_lag_24h",
+      "mae": 10.391445343837413,
+      "rmse": 28.48039023883668,
+      "wape_pct": 31.449326579797688,
+      "r2": 0.8333361981980014,
+      "n_rows": 235591,
+      "zero_target_fraction": 0.0
+    }
+  ],
+  "test_metrics": {
+    "mae": 5.829826190416632,
+    "rmse": 13.02859860508097,
+    "wape_pct": 16.397487428744792,
+    "r2": 0.9614426927234159,
+    "n_rows": 295001,
+    "zero_target_fraction": 0.0
+  },
+  "ensembling": {
+    "members": [
+      "XGBoost_Poisson",
+      "LightGBM_Poisson",
+      "ExtraTrees"
+    ],
+    "weights": {
+      "XGBoost_Poisson": 0.5514750276013902,
+      "LightGBM_Poisson": 0.10156333412494817,
+      "ExtraTrees": 0.3469616382736616
+    },
+    "weights_fitted_only_on": "blend time window"
+  },
+  "stacking_ridge_selected": true,
+  "optuna_trials_per_booster": 3,
+  "failed_models": {},
+  "time_windows": {
+    "train": {
+      "rows": 1549801,
+      "min_hour": "2025-01-01 00:00:00",
+      "max_hour": "2026-01-31 03:00:00"
+    },
+    "blend": {
+      "rows": 242956,
+      "min_hour": "2026-01-31 04:00:00",
+      "max_hour": "2026-04-01 23:00:00"
+    },
+    "select": {
+      "rows": 235591,
+      "min_hour": "2026-04-02 00:00:00",
+      "max_hour": "2026-06-01 18:00:00"
+    },
+    "test": {
+      "rows": 295001,
+      "min_hour": "2026-06-01 19:00:00",
+      "max_hour": "2026-08-31 23:00:00"
+    }
+  },
+  "model_features": [
+    "zone_code",
+    "hour",
+    "weekday",
+    "month",
+    "is_weekend",
+    "hour_sin",
+    "hour_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "lag_1h",
+    "lag_24h",
+    "lag_168h",
+    "roll_3h",
+    "roll_24h",
+    "roll_168h",
+    "missing_lag1",
+    "missing_lag24",
+    "missing_lag168",
+    "cluster_id_feature"
+  ],
+  "train_rows_after_cap": 180001,
+  "train_rows_available": 1549801,
+  "disclaimer": "The test was not used to select the winner; final performance varies by month/zone."
+}
