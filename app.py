@@ -145,6 +145,43 @@ hr { border-color: var(--line); }
 
 # ---------- Database ----------
 # Expected local layout: project folder/data/nyc_taxi_demo.duckdb
+
+import hashlib
+
+PROJECT_DIR = Path(__file__).resolve().parent
+DB_FILE = PROJECT_DIR / "data" / "nyc_taxi_demo.duckdb"
+PARTS_DIR = PROJECT_DIR / "data" / "db_parts"
+
+def restore_database():
+    if DB_FILE.exists() and DB_FILE.stat().st_size > 0:
+        return
+
+    parts = sorted(PARTS_DIR.glob("part_*.bin"))
+
+    if len(parts) != 5:
+        raise FileNotFoundError(
+            f"Thiếu database: tìm thấy {len(parts)}/5 phần trong {PARTS_DIR}"
+        )
+
+    DB_FILE.parent.mkdir(parents=True, exist_ok=True)
+    temporary_file = DB_FILE.with_suffix(".tmp")
+
+    try:
+        with temporary_file.open("wb") as output:
+            for part in parts:
+                with part.open("rb") as source:
+                    while True:
+                        chunk = source.read(1024 * 1024)
+                        if not chunk:
+                            break
+                        output.write(chunk)
+
+        temporary_file.replace(DB_FILE)
+    finally:
+        if temporary_file.exists():
+            temporary_file.unlink()
+
+restore_database()
 DEFAULT_DB = Path(__file__).resolve().parent / "data" / "nyc_taxi_demo.duckdb"
 
 DB_PATH = Path(os.getenv("NYC_TAXI_DB_PATH", str(DEFAULT_DB))).expanduser()
