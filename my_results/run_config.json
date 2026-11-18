@@ -1,0 +1,17 @@
+{
+  "db_path": "/content/nyc_taxi_data/nyc_taxi_demo.duckdb",
+  "output_dir": "/content/NYC_Taxi_ML_Results_20261024_030335",
+  "top_zones": 0,
+  "max_train_rows": 180000,
+  "zero_fill_confirmed": false,
+  "min_rows": 500,
+  "min_distinct_hours": 240,
+  "k_max": 8,
+  "include_cluster_feature": true,
+  "run_random_forest": true,
+  "run_hdbscan": true,
+  "optuna_trials": 3,
+  "threads": 2,
+  "seed": 42,
+  "started_utc": "2026-10-24T03:03:35.251746+00:00"
+}
